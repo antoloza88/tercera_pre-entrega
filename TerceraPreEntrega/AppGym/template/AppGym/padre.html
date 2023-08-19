@@ -17,7 +17,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'AppGym/css/styles.css' %}" rel="stylesheet" />
+        <link href="{% static 'app_gym/css/styles.css' %}" rel="stylesheet" />
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -35,7 +35,7 @@
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Avatar Image-->
-                <img class="card-img-top" src="assets/img/good-vibes.jpeg" alt="" />
+                <img class="card-img-top" src="{% static 'app_gym/assets/img/good-vibes.jpeg' %}" alt="" />
                 <!-- Masthead Heading-->
                 <h1 class="masthead-heading text-uppercase mb-0">GOOD VIBES GYM</h1>
                 <!-- Icon Divider-->
@@ -84,7 +84,7 @@
                 </div>
                 <!-- Rutina Section Content-->
                 <div class="card" style="width: 23rem;">
-                    <img src="assets/img/piernas.jpg" class="card-img-top" alt="Piernas">
+                    <img src="{% static 'app_gym/assets/img/piernas.jpg' %}" class="card-img-top" alt="Piernas">
                     <div class="card-body">
                       <h5 class="card-title">Card title</h5>
                       <p class="card-text">Además de nuestras nueve máquinas vamos a realizar ejercicios para tonificar las piernas durante 40 min.</p>
@@ -92,7 +92,7 @@
                 </div>
 
                 <div class="card" style="width: 23rem;">
-                    <img src="assets/img/abdominales.jpg" class="card-img-top" alt="Abdominales">
+                    <img src="{% static 'app_gym/assets/img/abdominales.jpg' %}" class="card-img-top" alt="Abdominales">
                     <div class="card-body">
                       <h5 class="card-title">Card title</h5>
                       <p class="card-text">Además de nuestras nueve máquinas vamos a realizar ejercicios para tonificar las piernas durante 40 min.</p>
@@ -228,7 +228,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cabin.png" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="{% static 'app_gym/assets/img/portfolio/cabin.png' $}" alt="..." />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
                                     <button class="btn btn-primary" data-bs-dismiss="modal">
