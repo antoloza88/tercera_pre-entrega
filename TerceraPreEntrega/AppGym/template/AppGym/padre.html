@@ -32,7 +32,7 @@
         </nav>
 
         <!-- Masthead-->
-        <header class="masthead bg-primary text-white text-center">
+        <header class="masthead bg-secondary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Avatar Image-->
                 <img class="card-img-top" src="{% static 'app_gym/assets/img/good-vibes.jpeg' %}" alt="" />
@@ -72,7 +72,7 @@
             </div>
         </section>
         <!-- Rutina Section-->
-        <section class="page-section bg-primary text-white mb-0" id="about">
+        <section class="page-section bg-secondary text-white mb-0" id="about">
             <div class="container">
                 <!-- Rutina Section Heading-->
                 <h2 class="page-section-heading text-center text-uppercase text-white">Rutinas</h2>
@@ -83,21 +83,28 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Rutina Section Content-->
-                <div class="card" style="width: 23rem;">
-                    <img src="{% static 'app_gym/assets/img/piernas.jpg' %}" class="card-img-top" alt="Piernas">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Además de nuestras nueve máquinas vamos a realizar ejercicios para tonificar las piernas durante 40 min.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card" style="width: 23rem; color: goldenrod;">
+                            <img src="{% static 'app_gym/assets/img/piernas.jpg' %}" class="card-img-top" alt="Piernas">
+                            <div class="card-body">
+                                <h5 class="card-title">Piernas</h5>
+                                <p class="card-text">Además de nuestras nueve máquinas vamos a realizar ejercicios para tonificar las piernas durante 40 min.</p>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="col-md-6">
+                        <div class="card" style="width: 23rem; color: goldenrod;">
+                            <img src="{% static 'app_gym/assets/img/abdominales.jpg' %}" class="card-img-top" alt="Abdominales">
+                            <div class="card-body">
+                                <h5 class="card-title">Abdominales</h5>
+                                <p class="card-text">Además de nuestras nueve máquinas vamos a realizar ejercicios para tonificar las piernas durante 40 min.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="card" style="width: 23rem;">
-                    <img src="{% static 'app_gym/assets/img/abdominales.jpg' %}" class="card-img-top" alt="Abdominales">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Además de nuestras nueve máquinas vamos a realizar ejercicios para tonificar las piernas durante 40 min.</p>
-                    </div>
-                </div>
+                
 
             </div>
         </section>
