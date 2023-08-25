@@ -11,5 +11,7 @@ urlpatterns = [
     path('NuevaClientaFormulario', views.nuevaclientaformulario, name="NuevaClientaFormulario"),
     path('busquedaClienta', views.busquedaClienta, name="BusquedaClienta"),
     path('buscar/', views.buscar),
+    path('leerClientas', views.leerClientas, name="LeerClientas"),
+    path('eliminarClienta/<clienta_usuario>/', views.eliminarClienta, name="EliminarClienta")
         
 ]

@@ -8,11 +8,16 @@
 </head>
 <body>
 
-    {% for p in clientas %}
+    {% for p in Clientas %}
 
-         <li>{{p}}</li>
+         <li> {{p}} </li>
+         <button>
+            <a href="{% url 'EliminarClienta' p.usuario %}"> Eliminar </a>
+         </button>
 
     {% endfor %}
+
+    <a href="NuevaClientaFormulario"><button>Agregar nueva clienta</button></a>
 
 </body>
 </html>

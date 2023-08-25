@@ -55,3 +55,44 @@ def buscar(request):
 
     #return HttpResponse(respuesta)
     return render(request, "AppGym/resultadosBusqueda.html", {"respuesta":respuesta})
+  
+def leerClientas (request):
+    clientas = Clientes.objects.all()
+    contexto = {"Clientas": clientas}
+    return render(request, "AppGym/leerClientas.html", contexto)
+
+def eliminarClienta(request, clienta_usuario):
+    clienta = Clientes.objects.get(usuario = clienta_usuario)
+    clienta.delete()
+
+    clientas =Clientes.objects.all()
+    contexto = {"Clientas": clientas}
+
+    return render(request, "AppGym/leerClientas.html", contexto)
+
+def editarClienta(request, clienta_usuario):
+   clienta = Clientes.objects.get(usuario=clienta_usuario)
+
+   if request.method == 'POST':
+      miFormulario = NuevaClientaFormulario(request.POST)
+      print(miFormulario)
+      
+      if miFormulario.is_valid:
+         
+         informacion = miFormulario.cleaned_data
+         clienta.usuario = informacion['usuario']
+         clienta.nombre = informacion['nombre']
+         clienta.apellido = informacion['apellido']
+         clienta.fecha_de_nacimiento = informacion['fecha_de_nacimiento']
+         clienta.email = informacion['email']
+         clienta.celular = informacion['celular']
+         clienta.contraseña = informacion['contraseña']
+
+         clienta.save()
+
+         return render(request, "AppGym/Inicio.html")
+   else:
+       miFormulario= NuevaClientaFormulario(initial={'usuario': clienta.usuario, 'nombre': clienta.nombre, 'apellido': clienta.apellido, 'fecha_de_nacimiento': clienta.fecha_de_nacimiento, 'email': clienta.email, 'celular': clienta.celular, 'contraseña': clienta.contraseña})
+
+   return render(request, "AppGym/editarClienta.html", {"miFormulario":miFormulario, "clienta_usuario":clienta_usuario})   
+      

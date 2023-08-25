@@ -16,9 +16,13 @@ class Clientes(models.Model):
     celular = models.IntegerField()
     contraseña = models.IntegerField()
 
+    def __str__(self):
+        return f"Usuario: {self.usuario} - Nombre: {self.nombre} - Apellido: {self.apellido} - Email: {self.email}"
+
 class Profesora(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)
+
 
 
 
