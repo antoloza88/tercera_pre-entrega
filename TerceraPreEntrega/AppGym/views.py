@@ -2,6 +2,9 @@ from django.shortcuts import render
 from AppGym.models import Clientes, Rutina, Profesora
 from django.http import HttpResponse
 from AppGym.forms import NuevaClientaFormulario
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+
 
 # Create your views here.
 def inicio(request):
@@ -38,7 +41,7 @@ def nuevaclientaformulario(request):
 
 
 def busquedaClienta(request):
-    return render(request, "AppGym/BusquedaClienta.html")
+   return render(request, "AppGym/BusquedaClienta.html")
 
 def buscar(request):
 
@@ -57,18 +60,18 @@ def buscar(request):
     return render(request, "AppGym/resultadosBusqueda.html", {"respuesta":respuesta})
   
 def leerClientas (request):
-    clientas = Clientes.objects.all()
-    contexto = {"Clientas": clientas}
-    return render(request, "AppGym/leerClientas.html", contexto)
+   clientas = Clientes.objects.all()
+   contexto = {"Clientas": clientas}
+   return render(request, "AppGym/leerClientas.html", contexto)
 
 def eliminarClienta(request, clienta_usuario):
-    clienta = Clientes.objects.get(usuario = clienta_usuario)
-    clienta.delete()
+   clienta = Clientes.objects.get(usuario = clienta_usuario)
+   clienta.delete()
 
-    clientas =Clientes.objects.all()
-    contexto = {"Clientas": clientas}
+   clientas =Clientes.objects.all()
+   contexto = {"Clientas": clientas}
 
-    return render(request, "AppGym/leerClientas.html", contexto)
+   return render(request, "AppGym/leerClientas.html", contexto)
 
 def editarClienta(request, clienta_usuario):
    clienta = Clientes.objects.get(usuario=clienta_usuario)
@@ -94,5 +97,34 @@ def editarClienta(request, clienta_usuario):
    else:
        miFormulario= NuevaClientaFormulario(initial={'usuario': clienta.usuario, 'nombre': clienta.nombre, 'apellido': clienta.apellido, 'fecha_de_nacimiento': clienta.fecha_de_nacimiento, 'email': clienta.email, 'celular': clienta.celular, 'contraseña': clienta.contraseña})
 
-   return render(request, "AppGym/editarClienta.html", {"miFormulario":miFormulario, "clienta_usuario":clienta_usuario})   
+   return render(request, "AppGym/NuevaClientaFormulario.html", {"miFormulario":miFormulario, "clienta_usuario":clienta_usuario})
+
+
+def login_request(request):
+    
+   if request.method == "POST":
+      form = AuthenticationForm(request, data = request.POST)
+
+      if form.is_valid():
+         usuario = form.cleaned_data.get('username')
+         contra = form.cleaned_data.get('password')
+
+         user = authenticate(username=usuario, password=contra)
+
+         
+         if user is not None:
+            login(request, user)
+
+            return render(request, "AppGym/Inicio.html", {"mensaje": f"Bienvenida {usuario}"})
+
+         else:
+            
+            return render(request, "AppGym/Inicio.html", {"mensaje":"Error, datos incorrectos"})
       
+      else:
+        return render(request, "AppGym/Inicio.html", {"mensaje":"Error, formulario erroneo"})
+   
+   form = AuthenticationForm()
+
+   return render(request, "AppGym/login.html", {'fomr':form})
+
